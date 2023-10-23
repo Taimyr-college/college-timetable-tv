@@ -1,0 +1,125 @@
+/* Стили для баннера */
+.banner {
+    background-color: #9e749d; /* Розовый цвет */
+    color: #fff;
+    text-align: center;
+    padding: 40px 0; /* Измените это значение, чтобы изменить высоту плашки */
+    width: 100%;
+    position: relative; /* Добавляем позицию относительно для плашки */
+    display: flex; /* Добавляем flex-контейнер для размещения изображения и контента рядом */
+    justify-content: center; /* Выравниваем элементы по горизонтали по центру */
+    align-items: center; /* Выравниваем элементы по вертикали по центру */
+}
+
+.banner-image {
+    width: 150px; /* Ширина изображения */
+    height: auto; /* Автоматическая высота */
+    margin-right: 20px; /* Отступ справа от изображения */
+    margin-left: 10px; /* Отступ слева от изображения */
+}
+
+.banner-content {
+    flex-grow: 1; /* Растягиваем контент, чтобы он занимал всю доступную ширину */
+    /*font-family: "Helvetica", sans-serif;/* Установите шрифт текста, в данном случае "Arial" */
+    /*font-size: 40px; /* Измените размер текста на 18 пикселей */
+    }
+
+.banner::before,
+.banner::after {
+    content: "";
+    display: block;
+    background-color: #fff; /* Белый цвет */
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 15px; /* Увеличьте высоту полос */
+    border-width: 10px; /* Измените эту толщину по вашему выбору */
+    margin: 5px 0; /* Уменьшите это значение для близкого расстояния между полосами */
+}
+
+.banner::before {
+    top: 10px; /* Полоса сверху */
+}
+
+.banner::after {
+    bottom: 10px; /* Полоса снизу */
+}
+
+.banner p {
+    font-size: 24px; /* Размер шрифта текста остается прежним */
+    margin: 10px 0; /* Добавьте отступы между текстом и полосами */
+    vertical-align: bottom; /* Выравнивание текста внизу */
+}
+
+/* Стили для всей страницы */
+body {
+    background-color: #a78fa3; /* Светло-розовый фон */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Изменение размера имеющегося текста */
+.banner-content p {
+    font-size: 80px; /* Измените размер имеющегося текста "Добро пожаловать на наш сайт" */
+    font-family: "Helvetica", sans-serif;
+    font-weight: bold; /* Делаем текст жирным */
+}
+
+.slider-container {
+    position: absolute;
+    top: 250px;
+    /*text-align: center; /* Выравниваем текст по центру контейнера */
+    /*padding: 200px 0; /* Измените это значение, чтобы изменить высоту плашки */
+    height: 100%;
+    width: 100%;
+    display: flex; /* Добавляем flex-контейнер для размещения изображения и контента рядом */
+    justify-content: center; /* Выравниваем элементы по горизонтали по центру */
+    align-items: center;
+    overflow: hidden;
+}
+
+.slider {
+    position: absolute;
+    top: 0;
+    transition: transform 2s ease-in-out;
+}
+
+.box {
+/*  outline: 2px dashed green;*/
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.box img {
+    max-width: 30%;
+    max-height: 100%;
+    background-color: white;
+}
+
+IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.positioned {
+    position: relative;
+    margin-top: 3%;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 5px;
+    background-color: #a78fa3;
+    position: relative;
+    left: 0;
+}
+
+.progress-bar-inner {
+    height: 100%;
+    width: 0px;
+    background-color: #9e749d;
+    position: absolute;
+}
