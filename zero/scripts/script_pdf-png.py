@@ -1,13 +1,14 @@
+from pathlib import Path
 from pdf2image import convert_from_path
-
+# "poppler" need install too
 
 def convert(badPdf, locate):
-    images = convert_from_path(f'{locate}', 700)
+    images = convert_from_path(f'{badPdf}', 100)
     for i, image in enumerate(images):
-        image.save(f'{locate,i}.png')
+        image.save(f'{locate}/{i}.png', 'PNG')
 
 
-www = Path('/home', 'kona', 'web', 'www')
+www = Path('..')
 today = Path(www,'todayPDF','1.pdf')
 tomorrow = Path(www, 'tomorrowPDF','1.pdf')
 png_today = Path(www, 'web_images', 'today/')
@@ -18,7 +19,7 @@ if today.is_file():
   print("convert today's")
   convert(today, png_today)
 else:
-    print("nothing to convert from today's")
+    print("nothing to convert from today's", today)
 
 if tomorrow.is_file():
   print("convert tomorrow's")
