@@ -1,28 +1,51 @@
 from pathlib import Path
+import subprocess
 from pdf2image import convert_from_path
 # "poppler" need install too
 
-def convert(badPdf, locate):
+def convertDOC(badDOC,locate):
+    subprocess.call([
+        'libreoffice',
+        'lowriter',
+        '--headless',
+        '--convert-to',
+        'pdf',
+        '--outdir',
+        '/home/nas_web_dev/zero/todayPDF',
+        badDOC
+    ])
+
+def convertPDF(badPdf, locate):
+    print(badPdf, locate)
     images = convert_from_path(f'{badPdf}', 100)
     for i, image in enumerate(images):
         image.save(f'{locate}/{i}.png', 'PNG')
 
 
-www = Path('..')
-today = Path(www,'todayPDF','1.pdf')
-tomorrow = Path(www, 'tomorrowPDF','1.pdf')
-png_today = Path(www, 'web_images', 'today/')
-png_tomorrow = Path(www, 'web_images', 'tomorrow/')
+www = Path('/home', 'nas_web_dev', 'zero')
+wwwPNG = Path('/home', 'nas_web_dev')
 
-print(today.is_file(), tomorrow.is_file())
-if today.is_file():
-  print("convert today's")
-  convert(today, png_today)
+todayDOC = Path(www, 'timeToday', '1.docx')
+tomorrowDOC = Path(www, 'timeTomorrow', '1.docx')
+
+todayPDF = Path(www,'todayPDF', '1.pdf')
+tomorrowPDF = Path(www, 'tomorrowPDF','1.pdf')
+
+todayPNG = Path(wwwPNG, '00_today/')
+tomorrowPNG = Path(wwwPNG, '00_tomorrow/')
+
+print(todayDOC.is_file(), todayDOC)
+
+if todayDOC.is_file():
+  print("convert today's DOCX")
+  convertDOC(todayDOC, todayPDF)
+  convertPDF(todayPDF, todayPNG)
 else:
-    print("nothing to convert from today's", today)
+    print("nothing to convert from today's")
 
-if tomorrow.is_file():
+if tomorrowDOC.is_file():
   print("convert tomorrow's")
-  convert(tomorrow, png_tomorrow)
+  convertPDF(tomorrowDOC, tomorrowPNG)
 else:
     print("nothing to convert from tomorrow's")
+
