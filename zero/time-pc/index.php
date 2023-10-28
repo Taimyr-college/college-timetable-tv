@@ -1,9 +1,5 @@
-
-//<?php header("Refresh: 1");
-//?>
-
 <?php // проверка расписания на завтра
-$filename = "web_images/R/tomorrow/1.png";
+$filename = "../../00_tomorrow/0.png";
 
 if (file_exists($filename)) {
     $tomorrow = True;
