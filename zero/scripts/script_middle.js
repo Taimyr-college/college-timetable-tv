@@ -7,7 +7,7 @@ let slideIndex = 0;
 let time = 0;
 let speed = 10;
 let step = 0;
-let timer = 60000;
+let timer = 6000;
 
 setInterval(seconds, speed);
 setInterval(nextSlide, timer);
