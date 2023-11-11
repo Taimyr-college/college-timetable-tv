@@ -16,6 +16,7 @@ def convertDOC(badDOC):
     badDOC.unlink()
 
 def convertPDF(badPDF, locate):
+    PNG.unlink()
     images = convert_from_path(f'{badPDF}', 130)
     for i, image in enumerate(images):
         image.save(f'{locate}/{i}.png', 'PNG')
